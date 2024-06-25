@@ -22,7 +22,6 @@ namespace _Scripts
 
         private void OnPlayerStateChanged(PlayerState playerState)
         {
-            Debug.Log("PLAYER STATE CHANGED TO: " + playerState);
             ChangePlayerAnimation(playerState);
         }
 
