@@ -56,5 +56,10 @@ namespace _Scripts
         {
             m_movementDirection = 0f;
         }
+
+        public float GetDirection()
+        {
+            return m_movementDirection;
+        }
     }
 }

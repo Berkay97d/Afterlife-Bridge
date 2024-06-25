@@ -22,9 +22,9 @@ public class Player : MonoBehaviour
         m_playerGroundCheck = GetComponent<PlayerGroundCheck>();
     }
 
-    public PlayerMovement GetPlayerMovement()
+    public static PlayerMovement GetPlayerMovement()
     {
-        return m_playerMovement;
+        return ms_player.m_playerMovement;
     }
 
     public static PlayerGroundCheck GetPlayerGroundCheck()
