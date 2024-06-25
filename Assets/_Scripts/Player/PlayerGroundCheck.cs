@@ -9,16 +9,10 @@ namespace _Scripts
         [SerializeField] private Vector2 _boxSize;
         [SerializeField] private Transform _feetTransform;
         [SerializeField] private float _distance;
-        
 
         
-
-        private void Update()
-        {
-            Debug.Log(CheckIsGrounded());
-        }
-
-        private bool CheckIsGrounded()
+        
+        public bool CheckIsGrounded()
         {
             var hit = Physics2D.BoxCast(_feetTransform.position, _boxSize, 0f, Vector2.down, _distance, _groundLayer);
 

@@ -26,9 +26,9 @@ public class Player : MonoBehaviour
         return m_playerMovement;
     }
 
-    public PlayerGroundCheck getPlayerGroundCheck()
+    public static PlayerGroundCheck GetPlayerGroundCheck()
     {
-        return m_playerGroundCheck;
+        return ms_player.m_playerGroundCheck;
     }
     
 }

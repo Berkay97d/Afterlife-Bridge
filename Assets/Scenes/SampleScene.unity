@@ -229,7 +229,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _boxSize: {x: 0.1, y: 0.01}
+  _boxSize: {x: 0.0575, y: 0.01}
   _feetTransform: {fileID: 1466534156}
   _distance: 0
 --- !u!1 &44354928

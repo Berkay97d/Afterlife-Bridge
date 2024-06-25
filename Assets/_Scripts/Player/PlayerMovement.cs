@@ -34,6 +34,8 @@ namespace _Scripts
 
         private void FixedUpdate()
         {
+            if (!Player.GetPlayerGroundCheck().CheckIsGrounded()) return;
+            
             _rb.velocity = m_movementVector * _moveSpeed;
         }
         
