@@ -10,7 +10,7 @@ namespace _Scripts
         [SerializeField] private float _jumpPower;
         
         private CustomInput m_customInput;
-        private bool m_isJumping;
+        private bool m_isJumpingButtonPressed;
 
         private void Awake()
         {
@@ -33,23 +33,17 @@ namespace _Scripts
         
         private void OnJumpStarted(InputAction.CallbackContext context)
         {
-            m_isJumping = true;
+            if(!Player.GetPlayerGroundCheck().CheckIsGrounded()) return;
+            
+            m_isJumpingButtonPressed = true;
             Jump();
         }
         
         private void OnJumpCanceled(InputAction.CallbackContext context)
         {
-            m_isJumping = false;
+            m_isJumpingButtonPressed = false;
         }
-
-        private void Update()
-        {
-            if (m_isJumping)
-            {
-                
-            }
-        }
-
+        
         private void Jump()
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpPower);
