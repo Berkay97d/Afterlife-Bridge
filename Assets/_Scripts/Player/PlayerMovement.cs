@@ -47,13 +47,11 @@ namespace _Scripts
             
             if (!Player.GetPlayerGroundCheck().CheckIsGrounded())
             {
-                Debug.Log("HAVA YÜRÜYÜŞÜ");
                 m_currentMoveSpeed = _airMoveSpeed;
                 _rb.velocity = new Vector2( m_currentMoveSpeed * m_movementDirection, _rb.velocity.y);
                 return;
             }
             
-            Debug.Log("NORMAL YÜRÜYÜŞ");
             m_currentMoveSpeed = _groundMoveSpeed;
             _rb.velocity = new Vector2( m_currentMoveSpeed * m_movementDirection, _rb.velocity.y);
         }

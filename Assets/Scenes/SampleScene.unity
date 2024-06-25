@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 18925164}
   _defaultGravityScale: 0.375
-  _longJumpGravityScale: 0.25
+  _longJumpGravityScale: 0.275
 --- !u!1 &44354928
 GameObject:
   m_ObjectHideFlags: 0
