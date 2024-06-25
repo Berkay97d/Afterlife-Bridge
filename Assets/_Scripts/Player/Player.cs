@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     private PlayerMovement m_playerMovement;
     private PlayerGroundCheck m_playerGroundCheck;
+    private PlayerStateMachine m_playerStateMachine;
     
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class Player : MonoBehaviour
     public static PlayerGroundCheck GetPlayerGroundCheck()
     {
         return ms_player.m_playerGroundCheck;
+    }
+    
+    public static PlayerStateMachine GetPlayerStateMachine()
+    {
+        return ms_player.m_playerStateMachine;
     }
     
 }
