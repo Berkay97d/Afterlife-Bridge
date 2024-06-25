@@ -36,6 +36,13 @@ namespace _Scripts
 
         private void FixedUpdate()
         {
+            //IF PLAYER ABOVE THE BRIDGE NOT ALLOWED TO AİR WALK
+            if (transform.position.y < -0.0083f)
+            {
+                _rb.velocity = new Vector2(0, _rb.velocity.y);
+                return;
+            }
+            
             if (!Player.GetPlayerGroundCheck().CheckIsGrounded())
             {
                 m_currentMoveSpeed = _airMoveSpeed;
