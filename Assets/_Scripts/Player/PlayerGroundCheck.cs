@@ -19,6 +19,11 @@ namespace _Scripts
             return hit.collider != null;
         }
 
+        public bool CheckIsNotGrounded()
+        {
+            return !CheckIsGrounded();
+        }
+
         private void OnDrawGizmos()
         {
             if (CheckIsGrounded())

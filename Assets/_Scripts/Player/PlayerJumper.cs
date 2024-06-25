@@ -8,6 +8,9 @@ namespace _Scripts
     {
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _jumpPower;
+
+        public event Action OnJumpStartPerform;
+        public event Action OnJumpStopPerform;
         
         private CustomInput m_customInput;
         private bool m_isJumpingButtonPressed;
@@ -36,17 +39,24 @@ namespace _Scripts
             if(!Player.GetPlayerGroundCheck().CheckIsGrounded()) return;
             
             m_isJumpingButtonPressed = true;
+            OnJumpStartPerform?.Invoke();
             Jump();
         }
         
         private void OnJumpCanceled(InputAction.CallbackContext context)
         {
             m_isJumpingButtonPressed = false;
+            OnJumpStopPerform?.Invoke();
         }
         
         private void Jump()
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpPower);
+        }
+
+        public bool GetIsJumpingButtonPressed()
+        {
+            return m_isJumpingButtonPressed;
         }
     }
 }
