@@ -37,19 +37,23 @@ namespace _Scripts
         private void FixedUpdate()
         {
             //IF PLAYER ABOVE THE BRIDGE NOT ALLOWED TO AİR WALK
-            if (transform.position.y < -0.0083f)
+            //TODO ZIPLAMA SONRASI YERE DÜŞÜNCE TRİGGERLANIYOR, TAKILMA BUG'I YARATIYOR
+            /*if (transform.position.y < -0.0125f)
             {
+                Debug.Log("ÖLDÜ");
                 _rb.velocity = new Vector2(0, _rb.velocity.y);
                 return;
-            }
+            }*/
             
             if (!Player.GetPlayerGroundCheck().CheckIsGrounded())
             {
+                Debug.Log("HAVA YÜRÜYÜŞÜ");
                 m_currentMoveSpeed = _airMoveSpeed;
                 _rb.velocity = new Vector2( m_currentMoveSpeed * m_movementDirection, _rb.velocity.y);
                 return;
             }
             
+            Debug.Log("NORMAL YÜRÜYÜŞ");
             m_currentMoveSpeed = _groundMoveSpeed;
             _rb.velocity = new Vector2( m_currentMoveSpeed * m_movementDirection, _rb.velocity.y);
         }
