@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_playerMovement = GetComponent<PlayerMovement>();
+        m_playerGroundCheck = GetComponent<PlayerGroundCheck>();
     }
 
     public PlayerMovement GetPlayerMovement()

@@ -6,10 +6,12 @@ namespace _Scripts
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _groundMoveSpeed;
+        [SerializeField] private float _airMoveSpeed;
         [SerializeField] private Rigidbody2D _rb;
-        
-        private Vector2 m_movementVector;
+
+        private float m_currentMoveSpeed;
+        private float m_movementDirection;
         private CustomInput m_customInput;
 
 
@@ -34,19 +36,25 @@ namespace _Scripts
 
         private void FixedUpdate()
         {
-            if (!Player.GetPlayerGroundCheck().CheckIsGrounded()) return;
+            if (!Player.GetPlayerGroundCheck().CheckIsGrounded())
+            {
+                m_currentMoveSpeed = _airMoveSpeed;
+                _rb.velocity = new Vector2( m_currentMoveSpeed * m_movementDirection, _rb.velocity.y);
+                return;
+            }
             
-            _rb.velocity = m_movementVector * _moveSpeed;
+            m_currentMoveSpeed = _groundMoveSpeed;
+            _rb.velocity = new Vector2( m_currentMoveSpeed * m_movementDirection, _rb.velocity.y);
         }
         
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
-            m_movementVector = context.ReadValue<Vector2>();
+            m_movementDirection = context.ReadValue<Vector2>().x;
         }
 
         private void OnMovementCanceled(InputAction.CallbackContext context)
         {
-            m_movementVector = Vector2.zero;
+            m_movementDirection = 0f;
         }
     }
 }
