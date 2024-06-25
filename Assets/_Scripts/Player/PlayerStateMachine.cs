@@ -5,6 +5,8 @@ namespace _Scripts
 {
     public class PlayerStateMachine : MonoBehaviour
     {
+        public event Action<PlayerState> OnPlayerStateChanged; 
+        
         private PlayerState m_playerState;
 
         private void Awake()
@@ -14,21 +16,30 @@ namespace _Scripts
 
         private void Update()
         {
-            if (!Player.GetPlayerGroundCheck().CheckIsGrounded() && m_playerState != PlayerState.Jump)
+            if (!Player.GetPlayerGroundCheck().CheckIsGrounded())
             {
-                SetPlayerState(PlayerState.Jump);
+                if (m_playerState != PlayerState.Jump)
+                {
+                    SetPlayerState(PlayerState.Jump);
+                    OnPlayerStateChanged?.Invoke(PlayerState.Jump);   
+                }
                 return;
             }
 
-            if (Mathf.Abs(Player.GetPlayerMovement().GetDirection()) > 0.5 && m_playerState != PlayerState.Walk)
+            if (Mathf.Abs(Player.GetPlayerMovement().GetDirection()) > 0.5 )
             {
-                SetPlayerState(PlayerState.Walk);
+                if (m_playerState != PlayerState.Walk)
+                {
+                    SetPlayerState(PlayerState.Walk);
+                    OnPlayerStateChanged?.Invoke(PlayerState.Walk);   
+                }
                 return;
             }
 
             if (m_playerState != PlayerState.Idle)
             {
                 SetPlayerState(PlayerState.Idle);
+                OnPlayerStateChanged?.Invoke(PlayerState.Idle);
                 return;
             }
         }

@@ -15,14 +15,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         ms_player = this;
-    }
-
-    private void Start()
-    {
         m_playerMovement = GetComponent<PlayerMovement>();
         m_playerGroundCheck = GetComponent<PlayerGroundCheck>();
+        m_playerStateMachine = GetComponent<PlayerStateMachine>();
     }
-
+    
     public static PlayerMovement GetPlayerMovement()
     {
         return ms_player.m_playerMovement;
