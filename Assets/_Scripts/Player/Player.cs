@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private static Player ms_player;
 
     private PlayerMovement m_playerMovement;
-
+    private PlayerGroundCheck m_playerGroundCheck;
     
     private void Awake()
     {
@@ -26,5 +26,9 @@ public class Player : MonoBehaviour
         return m_playerMovement;
     }
 
+    public PlayerGroundCheck getPlayerGroundCheck()
+    {
+        return m_playerGroundCheck;
+    }
     
 }
