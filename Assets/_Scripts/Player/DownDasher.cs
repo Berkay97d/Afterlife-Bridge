@@ -7,11 +7,12 @@ namespace _Scripts
     public class DownDasher : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _defaultMass;
-        [SerializeField] private float _dashMass;
+        [SerializeField] private float _defaultGravityScale;
+        [SerializeField] private float _dashGravityScale;
         
         
         private CustomInput m_customInput;
+        private bool isDownDashing;
         
 
         private void Awake()
@@ -35,9 +36,9 @@ namespace _Scripts
         
         private void FixedUpdate()
         {
-            if (Player.GetPlayerGroundCheck().CheckIsGrounded() && Math.Abs(_rb.mass - _defaultMass) > 0.1f)
+            if (Player.GetPlayerGroundCheck().CheckIsGrounded() && Math.Abs(_rb.mass - _defaultGravityScale) > 0.1f)
             {
-                _rb.mass = _defaultMass;
+                _rb.gravityScale = _defaultGravityScale;
             }
         }
         
@@ -46,12 +47,19 @@ namespace _Scripts
             Debug.Log("SELAM");
             if (Player.GetPlayerGroundCheck().CheckIsGrounded()) return;
 
-            _rb.mass = _dashMass;
+            isDownDashing = true;
+            _rb.gravityScale = _dashGravityScale;
         }
         
         private void OnDownCanceled(InputAction.CallbackContext obj)
         {
-            _rb.mass = _defaultMass;
+            isDownDashing = false;
+            _rb.gravityScale = _defaultGravityScale;
+        }
+
+        public bool GetIsDownDashing()
+        {
+            return isDownDashing;
         }
     }
 }

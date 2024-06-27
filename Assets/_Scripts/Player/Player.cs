@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     private PlayerGroundCheck m_playerGroundCheck;
     private PlayerStateMachine m_playerStateMachine;
     private PlayerJumper m_playerJumper;
+    private DownDasher m_downDasher;
     
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
         m_playerGroundCheck = GetComponent<PlayerGroundCheck>();
         m_playerStateMachine = GetComponent<PlayerStateMachine>();
         m_playerJumper = GetComponent<PlayerJumper>();
+        m_downDasher = GetComponent<DownDasher>();
     }
     
     public static PlayerMovement GetPlayerMovement()
@@ -40,6 +43,11 @@ public class Player : MonoBehaviour
     public static PlayerJumper GetPlayerJumper()
     {
         return ms_player.m_playerJumper;
+    }
+
+    public static DownDasher GetDownDasher()
+    {
+        return ms_player.m_downDasher;
     }
     
 }

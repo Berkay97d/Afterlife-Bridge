@@ -29,6 +29,12 @@ namespace _Scripts
             {
                 _rb.gravityScale = _defaultGravityScale;
             }
+            
+            if (!Player.GetPlayerGroundCheck().CheckIsGrounded() && !Player.GetDownDasher().GetIsDownDashing() && _rb.velocity.y < -.1f
+                && Math.Abs(_rb.gravityScale - _longJumpGravityScale) < 0.001f )
+            {
+                _rb.gravityScale = _defaultGravityScale;
+            }
         }
 
         private void OnJumpStartPerform()
@@ -38,6 +44,9 @@ namespace _Scripts
             IEnumerator LongJumpEnumerator()
             {
                 yield return new WaitUntil(Player.GetPlayerGroundCheck().CheckIsNotGrounded);
+                
+                if (Player.GetDownDasher().GetIsDownDashing()) yield break;
+                
                 _rb.gravityScale = _longJumpGravityScale;
                 yield break;
             }
