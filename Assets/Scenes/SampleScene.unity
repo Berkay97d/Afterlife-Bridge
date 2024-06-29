@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 18925167}
   - component: {fileID: 18925165}
   - component: {fileID: 18925171}
+  - component: {fileID: 18925175}
   - component: {fileID: 18925172}
   - component: {fileID: 18925173}
   - component: {fileID: 18925174}
@@ -306,8 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c7953d344e464b89d39b3b13bb854c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 18925164}
-  _defaultGravityScale: 0.425
   _longJumpGravityScale: 0.25
 --- !u!114 &18925173
 MonoBehaviour:
@@ -321,8 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9905114fd24994a7a3f68dec52c99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 18925164}
-  _defaultGravityScale: 0.425
   _dashGravityScale: 1
 --- !u!114 &18925174
 MonoBehaviour:
@@ -337,6 +334,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 67785407}
+--- !u!114 &18925175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18925162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba11c63fecd462289f3317768dda4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 18925164}
+  _defaultGravityScale: 0.425
 --- !u!1 &31497912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1606672601
 MonoBehaviour:
   m_ObjectHideFlags: 0

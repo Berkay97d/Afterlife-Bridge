@@ -6,20 +6,17 @@ namespace _Scripts
 {
     public class DownDasher : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _defaultGravityScale;
         [SerializeField] private float _dashGravityScale;
         
-        
         private CustomInput m_customInput;
-        private bool isDownDashing;
-        
+        private bool m_isDownDashing;
+        private const int GravityManipulationPriority = 2;
 
         private void Awake()
         {
             m_customInput = new CustomInput();
         }
-        
+
         private void OnEnable()
         {
             m_customInput.Enable();
@@ -34,32 +31,23 @@ namespace _Scripts
             m_customInput.Player.Down.canceled -= OnDownCanceled;
         }
         
-        private void FixedUpdate()
-        {
-            if (Player.GetPlayerGroundCheck().CheckIsGrounded() && Math.Abs(_rb.mass - _defaultGravityScale) > 0.1f)
-            {
-                _rb.gravityScale = _defaultGravityScale;
-            }
-        }
-        
         private void OnDownStarted(InputAction.CallbackContext obj)
         {
-            Debug.Log("SELAM");
             if (Player.GetPlayerGroundCheck().CheckIsGrounded()) return;
 
-            isDownDashing = true;
-            _rb.gravityScale = _dashGravityScale;
+            m_isDownDashing = true;
+            Player.GetGravityScaleController().SetGravityScale(_dashGravityScale, GravityManipulationPriority);
         }
         
         private void OnDownCanceled(InputAction.CallbackContext obj)
         {
-            isDownDashing = false;
-            _rb.gravityScale = _defaultGravityScale;
+            m_isDownDashing = false;
+            Player.GetGravityScaleController().ResetGravityScale(GravityManipulationPriority);
         }
 
         public bool GetIsDownDashing()
         {
-            return isDownDashing;
+            return m_isDownDashing;
         }
     }
 }
