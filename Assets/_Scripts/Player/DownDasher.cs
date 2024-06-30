@@ -30,7 +30,15 @@ namespace _Scripts
             m_customInput.Player.Down.started -= OnDownStarted;
             m_customInput.Player.Down.canceled -= OnDownCanceled;
         }
-        
+
+        private void FixedUpdate()
+        {
+            if (Player.GetPlayerGroundCheck().CheckIsGrounded() && m_isDownDashing)
+            {
+                OnDownCanceled(new InputAction.CallbackContext());
+            }
+        }
+
         private void OnDownStarted(InputAction.CallbackContext obj)
         {
             if (Player.GetPlayerGroundCheck().CheckIsGrounded()) return;

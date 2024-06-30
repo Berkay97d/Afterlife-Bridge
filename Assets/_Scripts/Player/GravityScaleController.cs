@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _Scripts
 {
@@ -19,6 +20,12 @@ namespace _Scripts
         private void FixedUpdate()
         {
             _rb.gravityScale = _targetGravityScale;
+            
+            if (Player.GetPlayerGroundCheck().CheckIsNotGrounded() && !Player.GetPlayerTeleporter().GetIsTeleporting() && _rb.velocity.y < -0.05 && Math.Abs(_rb.gravityScale - _defaultGravityScale) > 0.01f)
+            {
+                Debug.Log("FİXED");
+              SetGravityScale(_defaultGravityScale, 1);   
+            }
         }
 
         public void SetGravityScale(float gravityScale, int priority)
