@@ -10,6 +10,11 @@ namespace _Scripts
 
         private void Update()
         {
+            if (Player.GetPlayerTeleporter().GetIsTeleporting())
+            {
+                return;
+            }
+            
             var direction = Player.GetPlayerMovement().GetDirection();
            
             if (direction < -0.5f && Math.Abs(_visualTransform.rotation.y - 180) > 10)

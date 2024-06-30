@@ -44,6 +44,11 @@ namespace _Scripts
                 _rb.velocity = new Vector2(0, _rb.velocity.y);
                 return;
             }*/
+
+            if (Player.GetPlayerTeleporter().GetIsTeleporting())
+            {
+                return;
+            }
             
             if (!Player.GetPlayerGroundCheck().CheckIsGrounded())
             {

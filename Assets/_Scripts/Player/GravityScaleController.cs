@@ -38,5 +38,10 @@ namespace _Scripts
                 _priority = 0;
             }
         }
+
+        public void SetVelocity(Vector2 vel)
+        {
+            _rb.velocity = vel;
+        }
     }
 }

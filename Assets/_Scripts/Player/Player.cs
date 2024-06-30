@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private PlayerJumper m_playerJumper;
     private DownDasher m_downDasher;
     private GravityScaleController m_gravityScaleController;
+    private PlayerTeleporter m_playerTeleporter;
     
     private void Awake()
     {
@@ -25,6 +26,12 @@ public class Player : MonoBehaviour
         m_playerJumper = GetComponent<PlayerJumper>();
         m_downDasher = GetComponent<DownDasher>();
         m_gravityScaleController = GetComponent<GravityScaleController>();
+        m_playerTeleporter = GetComponent<PlayerTeleporter>();
+    }
+
+    public static PlayerTeleporter GetPlayerTeleporter()
+    {
+        return ms_player.m_playerTeleporter;
     }
 
     public static GravityScaleController GetGravityScaleController()
