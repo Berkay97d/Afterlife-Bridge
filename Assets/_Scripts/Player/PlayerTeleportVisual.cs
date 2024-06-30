@@ -33,10 +33,13 @@ namespace _Scripts
             return spawnPos;
         }
 
-        public IEnumerator ReturnZero()
+        public IEnumerator ReturnZero(Action OnTeleportCompleted)
         {
             yield return new WaitForSeconds(0.25f);
-            transform.DOScale(Vector3.zero, _scaleUpTime).SetEase(Ease.OutQuint);
+            transform.DOScale(Vector3.zero, _scaleUpTime).SetEase(Ease.OutQuint).OnComplete(() =>
+            {
+                OnTeleportCompleted?.Invoke();
+            });
         }
 
         private void AdjustVisiablity(bool isV)

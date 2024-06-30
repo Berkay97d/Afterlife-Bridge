@@ -10,7 +10,7 @@ namespace _Scripts
 
         private void Update()
         {
-            if (Player.GetPlayerTeleporter().GetIsTeleporting())
+            if (Player.GetPlayerTeleportStarter().GetIsTeleporting())
             {
                 return;
             }

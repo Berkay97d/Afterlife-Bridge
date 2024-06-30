@@ -45,7 +45,7 @@ namespace _Scripts
                 return;
             }*/
 
-            if (Player.GetPlayerTeleporter().GetIsTeleporting())
+            if (Player.GetPlayerTeleportStarter().GetIsTeleporting())
             {
                 return;
             }
