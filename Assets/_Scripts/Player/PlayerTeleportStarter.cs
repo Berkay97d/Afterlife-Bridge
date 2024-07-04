@@ -17,8 +17,6 @@ namespace _Scripts
         [SerializeField] private int _vibrato;
         [SerializeField] private float _randomness;
         
-        
-        
         private const int GravityManipulationPriority = 3;
         private CustomInput m_customInput;
         private Vector3 m_teleportCenter;
