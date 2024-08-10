@@ -19,6 +19,7 @@ namespace _Scripts
             return hit.collider != null;
         }
 
+        // WRITTEN FOR JUST USE in COROUTINE's WAIT UNTIL
         public bool CheckIsNotGrounded()
         {
             return !CheckIsGrounded();

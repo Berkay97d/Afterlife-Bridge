@@ -21,7 +21,7 @@ namespace _Scripts
         {
             _rb.gravityScale = _targetGravityScale;
             
-            if (Player.GetPlayerGroundCheck().CheckIsNotGrounded() && !Player.GetPlayerTeleportStarter().GetIsTeleporting() && _rb.velocity.y < -0.05 && Math.Abs(_rb.gravityScale - _defaultGravityScale) > 0.01f && !Player.GetDownDasher().GetIsDownDashing())
+            if (!Player.GetPlayerGroundCheck().CheckIsGrounded() && !Player.GetPlayerTeleportStarter().GetIsTeleporting() && _rb.velocity.y < -0.05 && Math.Abs(_rb.gravityScale - _defaultGravityScale) > 0.01f && !Player.GetDownDasher().GetIsDownDashing())
             {
               SetGravityScale(_defaultGravityScale, 1);   
             }
